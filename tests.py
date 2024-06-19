@@ -53,14 +53,10 @@ class TestBooksCollector:
         collector.add_new_book('Преступление и наказание')
         assert collector.get_books_genre() == collector.books_genre
 
-    def test_get_books_for_children_only_children_books(self):
-        collector = BooksCollector()
+
+    def test_get_books_for_children_only_children_books(self, collector):
         collector.add_new_book('Доктор Айболит')
-        collector.add_new_book('Под куполом')
-        collector.add_new_book('Кто-то следит за мной')
         collector.set_book_genre('Доктор Айболит', 'Мультфильмы')
-        collector.set_book_genre('Под куполом', 'Ужасы')
-        collector.set_book_genre('Кто-то следит за мной', 'Детективы')
         books_for_children = collector.get_books_for_children()
         assert len(books_for_children) == 1 and books_for_children[0] == 'Доктор Айболит'
 
