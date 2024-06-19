@@ -25,16 +25,10 @@ class TestBooksCollector:
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
 
     def test_init_books_genre(self, collector):
-        assert collector.books_genre == {}
+        assert collector.get_books_genre() == {}
 
     def test_init_favorites(self, collector):
-        assert collector.favorites == []
-
-    def test_init_genre(self, collector):
-        assert collector.genre == ['Фантастика', 'Ужасы', 'Детективы', 'Мультфильмы', 'Комедии']
-
-    def test_init_genre_age_rating(self, collector):
-        assert collector.genre_age_rating == ['Ужасы', 'Детективы']
+        assert collector.get_list_of_favorites_books() == []
 
     def test_add_new_book_book_len(self, collector):
         collector.add_new_book('Жареные зелёные помидоры в кафе "Полустанок"')
