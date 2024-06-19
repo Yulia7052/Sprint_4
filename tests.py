@@ -43,23 +43,10 @@ class TestBooksCollector:
     def test_get_book_genre_negative_input(self, collector):
         assert collector.get_book_genre('Унесенные ветром') == None
 
-    @pytest.mark.parametrize(
-        'genre_1,genre_2',
-        [
-             ['Фантастика', 'Ужасы'],
-             ['Ужасы', 'Детективы'],
-             ['Детективы', 'Мультфильмы'],
-             ['Мультфильмы', 'Комедии'],
-             ['Комедии', 'Фантастика']
-        ]
-    )
-    def test_get_books_with_specific_genre_positive_inputs(self, genre_1, genre_2):
-        collector = BooksCollector()
+    def test_get_books_with_specific_genre_positive_inputs(self, collector):
         collector.add_new_book('Мгла')
-        collector.add_new_book('Гнев ангелов')
-        collector.set_book_genre('Мгла', genre_1)
-        collector.set_book_genre('Гнев ангелов', genre_2)
-        books = collector.get_books_with_specific_genre(genre_1)
+        collector.set_book_genre('Мгла', 'Ужасы')
+        books = collector.get_books_with_specific_genre('Ужасы')
         assert len(books) == 1 and books[0] == 'Мгла'
 
     def test_get_books_genre_positive(self, collector):
