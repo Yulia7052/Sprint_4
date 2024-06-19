@@ -30,7 +30,7 @@ class TestBooksCollector:
     def test_init_favorites(self, collector):
         assert collector.get_list_of_favorites_books() == []
 
-    def test_add_new_book_book_len(self, collector):
+    def test_add_new_book_incorrect_len_of_book(self, collector):
         collector.add_new_book('Жареные зелёные помидоры в кафе "Полустанок"')
         assert len(collector.get_books_genre()) == 0
 
